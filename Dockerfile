@@ -44,12 +44,6 @@ RUN echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf && \
 # Install Composer
 RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
-# Run composer install on codebase
-RUN composer install --ignore-platform-reqs --no-scripts -d /var/www/html/
-
-# Update the build incase old .lock files - might not want this here...
-RUN composer update --ignore-platform-reqs --no-scripts -d /var/www/html/
-
 # Add _ss_environment file
 COPY data/_ss_environment.php /var/
 

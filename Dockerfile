@@ -44,9 +44,6 @@ RUN echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf && \
 # Install Composer
 RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
-# Add _ss_environment file
-COPY data/_ss_environment.php /var/
-
 # Setup permissions for www-data
 RUN chgrp www-data /var/www/ && \
     chgrp www-data -R /var/www/ && \
